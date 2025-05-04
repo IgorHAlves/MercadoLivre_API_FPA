@@ -1,0 +1,170 @@
+[
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
+    "Method": "GetCategoriasAsync",
+    "RelativePath": "v1/categorias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
+    "Method": "PostCategoriaAsync",
+    "RelativePath": "v1/categorias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vm",
+        "Type": "MercadoLivre_API.ViewModels.CategoriaViewModel.PostPutCategoriaViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
+    "Method": "GetCategoriaAsync",
+    "RelativePath": "v1/categorias/{idCategoria}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategoria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
+    "Method": "PutCategoriaAsync",
+    "RelativePath": "v1/categorias/{idCategoria}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategoria",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "vm",
+        "Type": "MercadoLivre_API.ViewModels.CategoriaViewModel.PostPutCategoriaViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
+    "Method": "DeleteCategoriaAsync",
+    "RelativePath": "v1/categorias/{idCategoria}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategoria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
+    "Method": "GetProdutosAsync",
+    "RelativePath": "v1/produtos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "MercadoLivre_API.Models.Produto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
+    "Method": "PostProdutoAsync",
+    "RelativePath": "v1/produtos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vm",
+        "Type": "MercadoLivre_API.ViewModels.ProdutoViewModel.PostPutProdutoViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
+    "Method": "GetProdutoAsync",
+    "RelativePath": "v1/produtos/{idProduto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProduto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
+    "Method": "PutProdutoAsync",
+    "RelativePath": "v1/produtos/{idProduto}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProduto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "vm",
+        "Type": "MercadoLivre_API.ViewModels.ProdutoViewModel.PostPutProdutoViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
+    "Method": "DeleteProdutoAsync",
+    "RelativePath": "v1/produtos/{idProduto}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProduto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

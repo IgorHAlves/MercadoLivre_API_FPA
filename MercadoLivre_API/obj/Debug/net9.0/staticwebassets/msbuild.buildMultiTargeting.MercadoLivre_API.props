@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MercadoLivre_API.props" />
+</Project>
