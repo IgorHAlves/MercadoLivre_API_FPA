@@ -8,19 +8,21 @@ namespace MercadoLivre_API.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
-            //Tabela
+            // Tabela
             builder.ToTable("Categoria");
-            //Chave primária
+
+            // Chave primária
             builder.HasKey(x => x.Id);
-            //Identity
+
+            // Identity para PostgreSQL
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .UseSerialColumn();
 
             builder.Property(x => x.Nome)
                 .IsRequired()
                 .HasColumnName("Nome")
-                .HasColumnType("NVARCHAR")
+                .HasColumnType("text")
                 .HasMaxLength(255);
 
             builder.HasMany(x => x.Produtos)

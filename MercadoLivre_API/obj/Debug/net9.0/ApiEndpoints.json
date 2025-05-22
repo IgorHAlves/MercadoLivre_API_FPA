@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
-    "Method": "GetCategoriasAsync",
+    "Method": "GetCategorias",
     "RelativePath": "v1/categorias",
     "HttpMethod": "GET",
     "IsController": true,
@@ -27,7 +27,7 @@
   },
   {
     "ContainingType": "MercadoLivre_API.Controllers.CategoriaController",
-    "Method": "GetCategoriaAsync",
+    "Method": "GetCategoria",
     "RelativePath": "v1/categorias/{idCategoria}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "idCategoria",
-        "Type": "System.Int64",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
@@ -80,7 +80,7 @@
   },
   {
     "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
-    "Method": "GetProdutosAsync",
+    "Method": "GetProdutos",
     "RelativePath": "v1/produtos",
     "HttpMethod": "GET",
     "IsController": true,
@@ -116,7 +116,7 @@
   },
   {
     "ContainingType": "MercadoLivre_API.Controllers.ProdutoController",
-    "Method": "GetProdutoAsync",
+    "Method": "GetProduto",
     "RelativePath": "v1/produtos/{idProduto}",
     "HttpMethod": "GET",
     "IsController": true,

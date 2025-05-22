@@ -5,12 +5,19 @@ namespace MercadoLivre_API.Data
 {
     public class MercadoLivreDataContext : DbContext
     {
-        public DbSet<Produto> Produtos{ get; set; }
+        public MercadoLivreDataContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=MercadoLivre;User ID=SA;Password=1q2w3e4r@#$;TrustServerCertificate=True");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql("Server=localhost,5432;Database=MercadoLivre;User ID=postgres;Password=1234;TrustServerCertificate=True");
+            }
         }
     }
 }

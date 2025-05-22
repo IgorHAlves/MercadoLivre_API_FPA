@@ -1,4 +1,5 @@
 using MercadoLivre_API.Data;
+using MercadoLivre_API.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MercadoLivreDataContext>();
+builder.Services.AddScoped<CategoriaService>();
+builder.Services.AddScoped<ProdutoService>();
 
 //Ajustar json
 builder.Services.AddControllers()

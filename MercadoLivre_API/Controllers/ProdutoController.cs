@@ -1,5 +1,6 @@
 ﻿using MercadoLivre_API.Data;
 using MercadoLivre_API.Models;
+using MercadoLivre_API.Services;
 using MercadoLivre_API.ViewModels;
 using MercadoLivre_API.ViewModels.CategoriaViewModel;
 using MercadoLivre_API.ViewModels.ProdutoViewModel;
@@ -13,77 +14,46 @@ namespace MercadoLivre_API.Controllers;
 [Route("v1/produtos")]
 public class ProdutoController : ControllerBase
 {
-    private readonly MercadoLivreDataContext _dbContext;
+    private readonly ProdutoService _produtoService;
 
-    public ProdutoController(MercadoLivreDataContext dbContext)
+
+    public ProdutoController(ProdutoService produtoService)
     {
-        _dbContext = dbContext;
+        _produtoService = produtoService;
     }
 
     [HttpGet]
-    public async Task<ActionResult<Produto>> GetProdutosAsync()
+    public ActionResult<Produto> GetProdutos()
     {
         try
         {
-            List<Produto> produtos = await _dbContext.Produtos.Include(x => x.Categoria).ToListAsync();
+            List<VisualizarProdutoViewModel> vms = _produtoService.VisualizarProdutos();
 
-            if (produtos.Count == 0)
+            if (vms.Count == 0)
                 return NotFound("Não há produtos cadastrados");
-
-            List<VisualizarProdutoViewModel> vms = new List<VisualizarProdutoViewModel>();
-
-            foreach(Produto produto in produtos)
-            {
-                vms.Add(new VisualizarProdutoViewModel()
-                {
-                    Id = produto.Id,
-                    Nome = produto.Nome,
-                    Preco = produto.Preco,
-                    QuantidadeVenda = produto.QuantidadeVenda,
-                    Categoria = new VisualizarCategoriaProdutoViewModel()
-                    {
-                        Id = produto.Categoria.Id,
-                        Nome = produto.Categoria.Nome
-                    }
-                });
-            }
 
             return Ok(new ResultViewModel<List<VisualizarProdutoViewModel>>(vms));
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>("02x01 - Falha interna no servidor"));
-
         }
     }
 
     [HttpGet("{idProduto:int}")]
-    public async Task<IActionResult> GetProdutoAsync([FromRoute] int idProduto)
+    public ActionResult GetProduto([FromRoute] int idProduto)
     {
         try
         {
-            Produto produto = await _dbContext.Produtos.Include(x => x.Categoria).FirstOrDefaultAsync(produto => produto.Id == idProduto) ?? new Produto();
+            VisualizarProdutoViewModel vm = _produtoService.VisualizarProduto(idProduto);
 
-            if (produto.Id == 0)
-                return NotFound("Produto não encontrado");
-
-            VisualizarProdutoViewModel vm = new VisualizarProdutoViewModel()
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-                QuantidadeVenda = produto.QuantidadeVenda,
-                Categoria = new VisualizarCategoriaProdutoViewModel()
-                {
-                    Id = produto.Categoria.Id,
-                    Nome = produto.Categoria.Nome
-                }
-            };
+            if (vm == null)
+                return NotFound("Produto não localizado");
 
             return Ok(new ResultViewModel<VisualizarProdutoViewModel>(vm));
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
             return StatusCode(500, new ResultViewModel<Produto>("02x02 - Falha interna no servidor"));
         }
@@ -94,37 +64,12 @@ public class ProdutoController : ControllerBase
     {
         try
         {
-            Produto produto = new Produto
-            {
-                Nome = vm.Nome,
-                Preco = vm.Preco,
-                QuantidadeVenda = vm.QuantidadeVenda
-            };
+            int idProduto = _produtoService.CadastrarProduto(vm);
 
-            Categoria categoria = await _dbContext.Categorias.FirstOrDefaultAsync(categoria => categoria.Id == vm.IdCategoria) ?? new Categoria();
+            if (idProduto == 0)
+                return BadRequest("Não foi possível cadastrar o produto enviado");
 
-            if (categoria.Id != 0)
-                produto.Categoria = categoria;
-
-            await _dbContext.Produtos.AddAsync(produto);
-
-            VisualizarProdutoViewModel vmRetorno = new VisualizarProdutoViewModel
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-                QuantidadeVenda = produto.QuantidadeVenda,
-                Categoria = new VisualizarCategoriaProdutoViewModel
-                {
-                    Id = produto.Categoria.Id,
-                    Nome = produto.Categoria.Nome
-                }
-            };
-
-            await _dbContext.SaveChangesAsync();
-
-            return Created($"v1/produtos/{produto.Id}", new ResultViewModel<VisualizarProdutoViewModel>(vmRetorno));
-
+            return Created($"v1/produtos/{idProduto}", new ResultViewModel<PostPutProdutoViewModel>(vm));
         }
         catch (Exception)
         {
@@ -137,39 +82,7 @@ public class ProdutoController : ControllerBase
     {
         try
         {
-            Produto? produto = await _dbContext.Produtos.Include(categoria => categoria.Categoria).FirstOrDefaultAsync(produto => produto.Id == idProduto);
-
-            if (produto == null)
-                return NotFound("Produto não encontrado");
-
-            produto.Nome = vm.Nome;
-            produto.Preco = vm.Preco;
-            produto.QuantidadeVenda = vm.QuantidadeVenda;
-
-            Categoria? categoria = await _dbContext.Categorias.FirstOrDefaultAsync(categoria => categoria.Id == vm.IdCategoria);
-
-            if (categoria == null)
-                return NotFound("Categoria não localizada");
-
-            if (categoria.Id != produto.Categoria.Id)
-            {
-                produto.Categoria = categoria;
-            }
-
-            await _dbContext.SaveChangesAsync();
-
-            VisualizarProdutoViewModel vmRetorno = new VisualizarProdutoViewModel
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-                QuantidadeVenda = produto.QuantidadeVenda,
-                Categoria = new VisualizarCategoriaProdutoViewModel
-                {
-                    Id = produto.Categoria.Id,
-                    Nome = produto.Categoria.Nome
-                }
-            };
+            VisualizarProdutoViewModel vmRetorno = _produtoService.EditarProduto(idProduto, vm);
 
             return Ok(new ResultViewModel<VisualizarProdutoViewModel>(vmRetorno));
         }
@@ -188,13 +101,7 @@ public class ProdutoController : ControllerBase
     {
         try
         {
-            Produto? produto = await _dbContext.Produtos.FirstOrDefaultAsync(produto => produto.Id == idProduto);
-
-            if (produto == null)
-                return NotFound("Produto não encontrado");
-
-            _dbContext.Produtos.Remove(produto);
-            await _dbContext.SaveChangesAsync();
+            _produtoService.DeletarProduto(idProduto);
 
             return Ok("Produto removido com sucesso");
         }

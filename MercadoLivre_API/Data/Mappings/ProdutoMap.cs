@@ -8,37 +8,38 @@ namespace MercadoLivre_API.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            //Tabela
+            // Tabela
             builder.ToTable("Produto");
-            //Chave primária
+
+            // Chave primária
             builder.HasKey(x => x.Id);
-            //Identity
+
+            // Identity para PostgreSQL
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .UseSerialColumn();
 
-            //Propriedades
+            // Propriedades
             builder.Property(x => x.Nome)
                 .IsRequired()
                 .HasColumnName("Nome")
-                .HasColumnType("NVARCHAR")
+                .HasColumnType("text")
                 .HasMaxLength(255);
 
             builder.Property(x => x.Preco)
                 .IsRequired()
                 .HasColumnName("Preco")
-                .HasColumnType("DECIMAL(10,2)");//Validar
+                .HasColumnType("numeric(10,2)");
 
             builder.Property(x => x.QuantidadeVenda)
                 .IsRequired()
                 .HasColumnName("QuantidadeVenda")
-                .HasColumnType("INTEGER");
+                .HasColumnType("integer");
 
             builder.HasOne(x => x.Categoria)
                 .WithMany()
                 .HasConstraintName("FK_Categoria_Produto")
                 .OnDelete(DeleteBehavior.Cascade);
-                
         }
     }
 }
