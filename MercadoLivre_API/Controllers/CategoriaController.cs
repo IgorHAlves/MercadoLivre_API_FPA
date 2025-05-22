@@ -1,5 +1,6 @@
 ﻿
 using MercadoLivre_API.Data;
+using MercadoLivre_API.Exceptions;
 using MercadoLivre_API.Models;
 using MercadoLivre_API.Services;
 using MercadoLivre_API.ViewModels;
@@ -29,9 +30,6 @@ namespace MercadoLivre_API.Controllers
             {
                 List<VisualizarCategoriaViewModel> categorias = _categoriaService.VisualizarCategorias();
 
-                if (categorias.Count == 0)
-                    return NotFound(new ResultViewModel<Categoria>("Não existem categorias cadastradas"));
-
                 return Ok(new ResultViewModel<List<VisualizarCategoriaViewModel>>(categorias));
             }
             catch (Exception)
@@ -45,17 +43,17 @@ namespace MercadoLivre_API.Controllers
         {
             try
             {
-                VisualizarCategoriaViewModel vm = _categoriaService.VisualizarCategoria(idCategoria);
-
-                if (vm.Id == 0)
-                    return NotFound(new ResultViewModel<VisualizarCategoriaViewModel>("Categoria não encontrada"));
+                 VisualizarCategoriaViewModel vm = _categoriaService.VisualizarCategoria(idCategoria);
 
                 return Ok(new ResultViewModel<VisualizarCategoriaViewModel>(vm));
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
             }
             catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x02 - Falha interna no servidor"));
-
             }
         }
 
@@ -68,9 +66,13 @@ namespace MercadoLivre_API.Controllers
 
                 return Created($"$v1/categorias/{idCategoria}", new ResultViewModel<PostPutCategoriaViewModel>(vm));
             }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
+            }
             catch (Exception)
             {
-                return StatusCode(500, new ResultViewModel<Categoria>("01x03 - Falha interna no servidor"));
+                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x03 - Falha interna no servidor"));
             }
         }
 
@@ -83,13 +85,17 @@ namespace MercadoLivre_API.Controllers
 
                 return Ok(new ResultViewModel<VisualizarCategoriaViewModel>(vmRetorno));
             }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
+            }
             catch (DbUpdateException)
             {
                 return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x04 - Não foi possível alterar a categoria"));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x05 - Falha interna no servidor"));
+                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
             }
         }
 
@@ -102,9 +108,13 @@ namespace MercadoLivre_API.Controllers
 
                 return Ok("Categoria removida com sucesso");
             }
-            catch (Exception)
+            catch (NotFoundException ex)
             {
-                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x06 - Falha interna no servidor"));
+                return NotFound(new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
             }
         }
     }

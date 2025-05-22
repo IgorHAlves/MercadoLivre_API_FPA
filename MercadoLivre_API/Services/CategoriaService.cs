@@ -1,4 +1,5 @@
 ﻿using MercadoLivre_API.Data;
+using MercadoLivre_API.Exceptions;
 using MercadoLivre_API.Models;
 using MercadoLivre_API.ViewModels.CategoriaViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -17,154 +18,118 @@ namespace MercadoLivre_API.Services
 
         public List<VisualizarCategoriaViewModel> VisualizarCategorias()
         {
-            try
+            List<Categoria> categorias = _dbContext.Categorias.Include(x => x.Produtos).ToList();
+
+            List<VisualizarCategoriaViewModel> vms = categorias.Select(categoria => new VisualizarCategoriaViewModel
             {
-                List<Categoria> categorias = _dbContext.Categorias.Include(x => x.Produtos).ToList();
-                if (categorias.Count != 0)
+                Id = categoria.Id,
+                Nome = categoria.Nome,
+                Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
                 {
-
-                    List<VisualizarCategoriaViewModel> vms = categorias.Select(categoria => new VisualizarCategoriaViewModel
-                    {
-                        Id = categoria.Id,
-                        Nome = categoria.Nome,
-                        Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
-                        {
-                            Id = produto.Id,
-                            Nome = produto.Nome
-                        }).ToList()
-                    }
-                    ).ToList();
-
-                    return vms;
-                }
-
-                return new List<VisualizarCategoriaViewModel>();
-
+                    Id = produto.Id,
+                    Nome = produto.Nome
+                }).ToList()
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao consultar categorias:{ex.Message}");
-            }
+            ).ToList();
+
+            return vms;
         }
 
         public VisualizarCategoriaViewModel VisualizarCategoria(int idCategoria)
         {
-            try
-            {
-                Categoria categoria = _dbContext.Categorias.Include(x => x.Produtos).SingleOrDefault(cat => cat.Id == idCategoria) ?? new Categoria();
 
-                if (categoria.Id != 0)
+            Categoria? categoria = _dbContext.Categorias
+                .Include(x => x.Produtos)
+                .SingleOrDefault(cat => cat.Id == idCategoria);
+
+            if (categoria == null)
+                throw new NotFoundException("Categoria não encontrada");
+
+            VisualizarCategoriaViewModel vm = new VisualizarCategoriaViewModel
+            {
+                Id = categoria.Id,
+                Nome = categoria.Nome,
+                Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
                 {
-                    VisualizarCategoriaViewModel vm = new VisualizarCategoriaViewModel
-                    {
-                        Id = categoria.Id,
-                        Nome = categoria.Nome,
-                        Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
-                        {
-                            Id = produto.Id,
-                            Nome = produto.Nome
-                        }).ToList()
-                    };
+                    Id = produto.Id,
+                    Nome = produto.Nome
+                }).ToList()
+            };
 
-                    return vm;
-                }
-
-                return new VisualizarCategoriaViewModel();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao consultar categoria:{ex.Message}");
-            }
+            return vm;
         }
 
         public int InserirCategoria(PostPutCategoriaViewModel vm)
         {
-            try
+
+            List<Produto> produtos = _dbContext.Produtos.Where(produto => vm.IdProdutos.Contains(produto.Id)).ToList();
+
+            Categoria categoria = new Categoria
             {
-                List<Produto> produtos = _dbContext.Produtos.Where(produto => vm.IdProdutos.Contains(produto.Id)).ToList();
+                Nome = vm.Nome
+            };
 
-                Categoria categoria = new Categoria
-                {
-                    Nome = vm.Nome
-                };
-
-                if (produtos.Count != 0)
-                {
-                    foreach (Produto produto in produtos)
-                    {
-                        categoria.Produtos.Add(produto);
-                    }
-                }
-
-                _dbContext.Categorias.AddAsync(categoria);
-
-                _dbContext.SaveChanges();
-
-                return categoria.Id;
-            }
-            catch (Exception ex)
+            if (produtos.Count < vm.IdProdutos.Count)
             {
-                throw new Exception($"Erro ao consultar categoria:{ex.Message}");
+                throw new NotFoundException("Há produtos não cadastrados na lista de produtos");
             }
+
+            foreach (Produto produto in produtos)
+            {
+                categoria.Produtos.Add(produto);
+            }
+
+            _dbContext.Categorias.AddAsync(categoria);
+
+            _dbContext.SaveChanges();
+
+            return categoria.Id;
         }
         public VisualizarCategoriaViewModel EditarCategoria(int idCategoria, PostPutCategoriaViewModel vm)
         {
-            try
+            Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == idCategoria);
+
+            if (categoria == null)
             {
-                Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == idCategoria);
-
-                if (categoria == null)
-                {
-                    throw new Exception($"Categoria não localizada");
-                }
-
-                List<Produto>? produtos = _dbContext.Produtos.Where(produto => vm.IdProdutos.Contains(produto.Id)).ToList();
-
-                if (produtos.Count != 0)
-                    categoria.Produtos = produtos;
-
-                categoria.Nome = vm.Nome;
-
-                _dbContext.SaveChanges();
-
-                VisualizarCategoriaViewModel vmRetorno = new VisualizarCategoriaViewModel
-                {
-                    Id = categoria.Id,
-                    Nome = categoria.Nome,
-                    Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
-                    {
-                        Id = produto.Id,
-                        Nome = produto.Nome
-                    }).ToList()
-                };
-
-                return vmRetorno;
+                throw new NotFoundException($"Categoria não localizada");
             }
 
-            catch (Exception)
+            List<Produto>? produtos = _dbContext.Produtos.Where(produto => vm.IdProdutos.Contains(produto.Id)).ToList();
+
+            if (vm.IdProdutos!.Count != produtos.Count)
+                throw new NotFoundException("Um ou mais produtos informados não foram encontrados.");
+
+            categoria.Produtos = produtos;
+
+            categoria.Nome = vm.Nome;
+
+            _dbContext.SaveChanges();
+
+            VisualizarCategoriaViewModel vmRetorno = new VisualizarCategoriaViewModel
             {
-                throw;
-            }
+                Id = categoria.Id,
+                Nome = categoria.Nome,
+                Produtos = categoria.Produtos.Select(produto => new VisualizarProdutoCategoriaViewModel
+                {
+                    Id = produto.Id,
+                    Nome = produto.Nome
+                }).ToList()
+            };
+
+            return vmRetorno;
         }
-        
+
         public void DeletarCategoria(int idCategoria)
         {
-            try
-            {
-                Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == idCategoria);
+            Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == idCategoria);
 
-                if (categoria == null)
-                {
-                    throw new Exception("Categoria não localizada");
-                }
-                _dbContext.Categorias.Remove(categoria);
-                _dbContext.SaveChanges();
-            }
-            catch (Exception)
+            if (categoria == null)
             {
-                throw;
+                throw new NotFoundException("Categoria não localizada");
             }
+            _dbContext.Categorias.Remove(categoria);
+            _dbContext.SaveChanges();
         }
-        
+
     }
 }

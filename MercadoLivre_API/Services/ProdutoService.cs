@@ -1,4 +1,5 @@
 ﻿using MercadoLivre_API.Data;
+using MercadoLivre_API.Exceptions;
 using MercadoLivre_API.Models;
 using MercadoLivre_API.ViewModels.ProdutoViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -17,153 +18,117 @@ namespace MercadoLivre_API.Services
 
         public List<VisualizarProdutoViewModel> VisualizarProdutos()
         {
-            try
-            {
-                List<Produto>? produtos = _dbContext.Produtos.Include(x => x.Categoria).ToList();
 
-                if (!produtos.Any())
+            List<Produto>? produtos = _dbContext.Produtos.Include(x => x.Categoria).ToList();
+
+            List<VisualizarProdutoViewModel> vms = produtos.Select(produto => new VisualizarProdutoViewModel()
+            {
+                Id = produto.Id,
+                Nome = produto.Nome,
+                Preco = produto.Preco,
+                QuantidadeVenda = produto.QuantidadeVenda,
+                Categoria = new VisualizarCategoriaProdutoViewModel()
                 {
-                    throw new Exception("Não há produtos cadastrados");
+                    Id = produto.Categoria.Id,
+                    Nome = produto.Categoria.Nome
                 }
+            }).ToList();
 
-                List<VisualizarProdutoViewModel> vms = produtos.Select(produto => new VisualizarProdutoViewModel()
-                {
-                    Id = produto.Id,
-                    Nome = produto.Nome,
-                    Preco = produto.Preco,
-                    QuantidadeVenda = produto.QuantidadeVenda,
-                    Categoria = new VisualizarCategoriaProdutoViewModel()
-                    {
-                        Id = produto.Categoria.Id,
-                        Nome = produto.Categoria.Nome
-                    }
-                }).ToList();
-
-                return vms;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao consultar os produtos");
-            }
+            return vms;
         }
 
         public VisualizarProdutoViewModel VisualizarProduto(int id)
         {
-            try
-            {
-                Produto? produto = _dbContext.Produtos.Include(x => x.Categoria).SingleOrDefault(produto => produto.Id == id);
 
-                if (produto == null)
+            Produto? produto = _dbContext.Produtos.Include(x => x.Categoria).SingleOrDefault(produto => produto.Id == id);
+
+            if (produto == null)
+            {
+                throw new NotFoundException("Produto não localizado");
+            }
+
+            VisualizarProdutoViewModel vm = new VisualizarProdutoViewModel()
+            {
+                Id = id,
+                Nome = produto.Nome,
+                Preco = produto.Preco,
+                QuantidadeVenda = produto.QuantidadeVenda,
+                Categoria = new VisualizarCategoriaProdutoViewModel()
                 {
-                    throw new Exception("Produto não localizado");
+                    Id = produto.Categoria.Id,
+                    Nome = produto.Categoria.Nome
                 }
+            };
 
-                VisualizarProdutoViewModel vm = new VisualizarProdutoViewModel()
-                {
-                    Id = id,
-                    Nome = produto.Nome,
-                    Preco = produto.Preco,
-                    QuantidadeVenda = produto.QuantidadeVenda,
-                    Categoria = new VisualizarCategoriaProdutoViewModel()
-                    {
-                        Id = produto.Categoria.Id,
-                        Nome = produto.Categoria.Nome
-                    }
-                };
-
-                return vm;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao consultar o produto");
-            }
+            return vm;
         }
+
 
         public int CadastrarProduto(PostPutProdutoViewModel vm)
         {
-            try
+            Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == vm.IdCategoria);
+
+            if (categoria == null)
+                throw new NotFoundException("Categoria não encontrada");
+
+            Produto produto = new Produto
             {
-                Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == vm.IdCategoria);
+                Nome = vm.Nome,
+                Preco = vm.Preco,
+                QuantidadeVenda = vm.QuantidadeVenda,
+                Categoria = categoria
+            };
 
-                if (categoria == null)
-                    throw new Exception("Categoria não encontrada");
+            _dbContext.Produtos.Add(produto);
+            _dbContext.SaveChanges();
 
-                Produto produto = new Produto
-                {
-                    Nome = vm.Nome,
-                    Preco = vm.Preco,
-                    QuantidadeVenda = vm.QuantidadeVenda,
-                    Categoria = categoria
-                };
-
-                _dbContext.Produtos.Add(produto);
-                _dbContext.SaveChanges();
-
-                return produto.Id;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao cadastrar produto");
-            }
+            return produto.Id;
         }
 
         public VisualizarProdutoViewModel EditarProduto(int idProduto, PostPutProdutoViewModel vm)
         {
-            try
+            Produto? produto = _dbContext.Produtos.SingleOrDefault(produto => produto.Id == idProduto);
+
+            if (produto == null)
+                throw new NotFoundException("Produto não encontrado");
+
+            Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == vm.IdCategoria);
+
+            if (categoria == null)
+                throw new NotFoundException("Categoria não encontrada");
+
+            produto.Nome = vm.Nome;
+            produto.Preco = vm.Preco;
+            produto.QuantidadeVenda = vm.QuantidadeVenda;
+            produto.Categoria = categoria;
+
+            _dbContext.SaveChanges();
+
+            return new VisualizarProdutoViewModel
             {
-                Categoria? categoria = _dbContext.Categorias.SingleOrDefault(categoria => categoria.Id == vm.IdCategoria);
-
-                if (categoria == null)
-                    throw new Exception("Categoria não encontrada");
-
-                Produto? produto = _dbContext.Produtos.SingleOrDefault(produto => produto.Id == idProduto);
-
-                if (produto == null)
-                    throw new Exception("Produto não encontrado");
-
-                produto.Nome = vm.Nome;
-                produto.Preco = vm.Preco;
-                produto.QuantidadeVenda = vm.QuantidadeVenda;
-                produto.Categoria = categoria;
-
-                _dbContext.SaveChanges();
-
-                return new VisualizarProdutoViewModel
+                Id = idProduto,
+                Nome = produto.Nome,
+                Preco = produto.Preco,
+                QuantidadeVenda = produto.QuantidadeVenda,
+                Categoria = new VisualizarCategoriaProdutoViewModel
                 {
-                    Id = idProduto,
-                    Nome = produto.Nome,
-                    Preco = produto.Preco,
-                    QuantidadeVenda = produto.QuantidadeVenda,
-                    Categoria = new VisualizarCategoriaProdutoViewModel
-                    {
-                        Id = categoria.Id,
-                        Nome = categoria.Nome
-                    }
-                };
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao editar produto");
-            }
+                    Id = categoria.Id,
+                    Nome = categoria.Nome
+                }
+            };
         }
 
         public void DeletarProduto(int idProduto)
         {
-            try
-            {
-                Produto? produto = _dbContext.Produtos.SingleOrDefault(produto => produto.Id == idProduto);
 
-                if (produto == null)
-                    throw new Exception("Produto não encontrado");
+            Produto? produto = _dbContext.Produtos.SingleOrDefault(produto => produto.Id == idProduto);
 
-                _dbContext.Produtos.Remove(produto);
+            if (produto == null)
+                throw new NotFoundException("Produto não encontrado");
 
-                _dbContext.SaveChanges();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao remover produto");
-            }
+            _dbContext.Produtos.Remove(produto);
+
+            _dbContext.SaveChanges();
         }
 
     }

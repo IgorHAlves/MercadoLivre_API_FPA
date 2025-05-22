@@ -3,6 +3,6 @@
     public class PostPutCategoriaViewModel
     {
         public string Nome { get; set; }
-        public List<int>? IdProdutos { get; set; }
+        public List<int>? IdProdutos { get; set; } = new List<int>();
     }
 }

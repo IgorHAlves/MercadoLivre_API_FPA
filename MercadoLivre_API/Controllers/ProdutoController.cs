@@ -1,4 +1,5 @@
 ﻿using MercadoLivre_API.Data;
+using MercadoLivre_API.Exceptions;
 using MercadoLivre_API.Models;
 using MercadoLivre_API.Services;
 using MercadoLivre_API.ViewModels;
@@ -29,15 +30,12 @@ public class ProdutoController : ControllerBase
         {
             List<VisualizarProdutoViewModel> vms = _produtoService.VisualizarProdutos();
 
-            if (vms.Count == 0)
-                return NotFound("Não há produtos cadastrados");
-
             return Ok(new ResultViewModel<List<VisualizarProdutoViewModel>>(vms));
 
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>("02x01 - Falha interna no servidor"));
+            return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
         }
     }
 
@@ -48,14 +46,15 @@ public class ProdutoController : ControllerBase
         {
             VisualizarProdutoViewModel vm = _produtoService.VisualizarProduto(idProduto);
 
-            if (vm == null)
-                return NotFound("Produto não localizado");
-
             return Ok(new ResultViewModel<VisualizarProdutoViewModel>(vm));
+        }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new ResultViewModel<Produto>("02x02 - Falha interna no servidor"));
+            return StatusCode(500, new ResultViewModel<Produto>(ex.Message));
         }
     }
 
@@ -66,14 +65,15 @@ public class ProdutoController : ControllerBase
         {
             int idProduto = _produtoService.CadastrarProduto(vm);
 
-            if (idProduto == 0)
-                return BadRequest("Não foi possível cadastrar o produto enviado");
-
             return Created($"v1/produtos/{idProduto}", new ResultViewModel<PostPutProdutoViewModel>(vm));
         }
-        catch (Exception)
+        catch (NotFoundException ex)
         {
-            return StatusCode(500, new ResultViewModel<Categoria>("02x03 - Falha interna no servidor"));
+            return NotFound(new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ResultViewModel<Categoria>(ex.Message));
         }
     }
 
@@ -86,13 +86,17 @@ public class ProdutoController : ControllerBase
 
             return Ok(new ResultViewModel<VisualizarProdutoViewModel>(vmRetorno));
         }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
+        }
         catch (DbUpdateException)
         {
             return StatusCode(500, new ResultViewModel<Produto>("02x04 - Não foi possível alterar o produto"));
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            return StatusCode(500, new ResultViewModel<Produto>("02x05 - Falha interna no servidor"));
+            return StatusCode(500, new ResultViewModel<Produto>(ex.Message));
         }
     }
 
@@ -105,9 +109,13 @@ public class ProdutoController : ControllerBase
 
             return Ok("Produto removido com sucesso");
         }
-        catch (Exception)
+        catch (NotFoundException ex)
         {
-            return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>("02x06 - Falha interna no servidor"));
+            return NotFound(new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
         }
     }
 };
