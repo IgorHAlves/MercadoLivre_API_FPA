@@ -23,12 +23,12 @@ namespace MercadoLivre_API.Controllers
         {
             _categoriaService = categoriaService;
         }
-        [HttpGet("")]
-        public ActionResult GetCategorias()
+        [HttpGet("offset/{offset:int}/limit/{limit:int}")]
+        public ActionResult GetCategorias([FromRoute] int offset, [FromRoute] int limit)
         {
             try
             {
-                List<VisualizarCategoriaViewModel> categorias = _categoriaService.VisualizarCategorias();
+                List<VisualizarCategoriaViewModel> categorias = _categoriaService.VisualizarCategorias(offset,limit);
 
                 return Ok(new ResultViewModel<List<VisualizarCategoriaViewModel>>(categorias));
             }

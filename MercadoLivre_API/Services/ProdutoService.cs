@@ -16,10 +16,10 @@ namespace MercadoLivre_API.Services
             _dbContext = dbContext;
         }
 
-        public List<VisualizarProdutoViewModel> VisualizarProdutos()
+        public List<VisualizarProdutoViewModel> VisualizarProdutos(int offset, int limit)
         {
 
-            List<Produto>? produtos = _dbContext.Produtos.Include(x => x.Categoria).ToList();
+            List<Produto>? produtos = _dbContext.Produtos.Include(x => x.Categoria).Skip(offset).Take(limit).OrderBy(produto => produto.Id).ToList();
 
             List<VisualizarProdutoViewModel> vms = produtos.Select(produto => new VisualizarProdutoViewModel()
             {

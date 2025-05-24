@@ -4,6 +4,7 @@ using MercadoLivre_API.Models;
 using MercadoLivre_API.ViewModels.CategoriaViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace MercadoLivre_API.Services
 {
@@ -16,9 +17,9 @@ namespace MercadoLivre_API.Services
             _dbContext = dbContext;
         }
 
-        public List<VisualizarCategoriaViewModel> VisualizarCategorias()
+        public List<VisualizarCategoriaViewModel> VisualizarCategorias(int offset, int limit)
         {
-            List<Categoria> categorias = _dbContext.Categorias.Include(x => x.Produtos).ToList();
+            List<Categoria> categorias = _dbContext.Categorias.Include(x => x.Produtos).Skip(offset).Take(limit).OrderBy(categoria => categoria.Id).ToList();
 
             List<VisualizarCategoriaViewModel> vms = categorias.Select(categoria => new VisualizarCategoriaViewModel
             {

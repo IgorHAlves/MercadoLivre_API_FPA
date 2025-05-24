@@ -23,12 +23,12 @@ public class ProdutoController : ControllerBase
         _produtoService = produtoService;
     }
 
-    [HttpGet]
-    public ActionResult<Produto> GetProdutos()
+    [HttpGet("offset/{offset:int}/limit/{limit:int}")]
+    public ActionResult<Produto> GetProdutos([FromRoute] int offset, [FromRoute] int limit)
     {
         try
         {
-            List<VisualizarProdutoViewModel> vms = _produtoService.VisualizarProdutos();
+            List<VisualizarProdutoViewModel> vms = _produtoService.VisualizarProdutos(offset,limit);
 
             return Ok(new ResultViewModel<List<VisualizarProdutoViewModel>>(vms));
 
