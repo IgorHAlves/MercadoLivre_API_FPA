@@ -1,22 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\",
+  "WorkspaceRootPath": "C:\\Dev\\MercadoLivre_API_FPA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\programacao\\mercadolivre_api_fpa\\mercadolivre_api\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1DB73D2C-B888-49A8-9250-4AADFF9D07A7}|MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api_test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DB73D2C-B888-49A8-9250-4AADFF9D07A7}|MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj|solutionrelative:mercadolivre_api_test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DB73D2C-B888-49A8-9250-4AADFF9D07A7}|MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api_test\\mercadolivre_api_test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1DB73D2C-B888-49A8-9250-4AADFF9D07A7}|MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj|solutionrelative:mercadolivre_api_test\\mercadolivre_api_test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api\\mercadolivre_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\mercadolivre_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api\\data\\mercadolivredatacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\data\\mercadolivredatacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\programacao\\mercadolivre_api_fpa\\mercadolivre_api\\services\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\dev\\mercadolivre_api_fpa\\mercadolivre_api\\services\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\services\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\programacao\\mercadolivre_api_fpa\\mercadolivre_api\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|c:\\programacao\\mercadolivre_api_fpa\\mercadolivre_api\\services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9FE9551-D52B-4734-B2AE-A7FFC01CAC52}|MercadoLivre_API\\MercadoLivre_API.csproj|solutionrelative:mercadolivre_api\\services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,60 +42,92 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "MercadoLivre_API_Test\\UnitTest1.cs",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\UnitTest1.cs",
+              "RelativeToolTip": "MercadoLivre_API_Test\\UnitTest1.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T23:43:37.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MercadoLivre_API_Test",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+              "RelativeDocumentMoniker": "MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+              "RelativeToolTip": "MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-23T23:42:24.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MercadoLivre_API",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj",
+              "RelativeDocumentMoniker": "MercadoLivre_API\\MercadoLivre_API.csproj",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj",
+              "RelativeToolTip": "MercadoLivre_API\\MercadoLivre_API.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-23T23:40:55.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Microsoft.NET.TargetFrameworkInference.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeDocumentMoniker": "..\\..\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeToolTip": "..\\..\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKUAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-23T23:40:37.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MercadoLivreDataContext.cs",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Data\\MercadoLivreDataContext.cs",
+              "RelativeDocumentMoniker": "MercadoLivre_API\\Data\\MercadoLivreDataContext.cs",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Data\\MercadoLivreDataContext.cs",
+              "RelativeToolTip": "MercadoLivre_API\\Data\\MercadoLivreDataContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T23:39:03.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ProdutoController.cs",
-              "DocumentMoniker": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\ProdutoController.cs",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\ProdutoController.cs",
               "RelativeDocumentMoniker": "MercadoLivre_API\\Controllers\\ProdutoController.cs",
-              "ToolTip": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\ProdutoController.cs",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\ProdutoController.cs",
               "RelativeToolTip": "MercadoLivre_API\\Controllers\\ProdutoController.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAowGcAAABIAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-22T19:12:56.784Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "ProdutoService.cs",
-              "DocumentMoniker": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\ProdutoService.cs",
+              "DocumentMoniker": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\ProdutoService.cs",
               "RelativeDocumentMoniker": "MercadoLivre_API\\Services\\ProdutoService.cs",
-              "ToolTip": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\ProdutoService.cs",
+              "ToolTip": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\ProdutoService.cs",
               "RelativeToolTip": "MercadoLivre_API\\Services\\ProdutoService.cs",
               "ViewState": "AgIAAG4AAAAAAAAAAAApwIIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T19:09:10.363Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoriaController.cs",
-              "DocumentMoniker": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\CategoriaController.cs",
-              "RelativeDocumentMoniker": "MercadoLivre_API\\Controllers\\CategoriaController.cs",
-              "ToolTip": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Controllers\\CategoriaController.cs",
-              "RelativeToolTip": "MercadoLivre_API\\Controllers\\CategoriaController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAkwFcAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T19:13:02.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoriaService.cs",
-              "DocumentMoniker": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\CategoriaService.cs",
-              "RelativeDocumentMoniker": "MercadoLivre_API\\Services\\CategoriaService.cs",
-              "ToolTip": "C:\\PROGRAMACAO\\MercadoLivre_API_FPA\\MercadoLivre_API\\Services\\CategoriaService.cs",
-              "RelativeToolTip": "MercadoLivre_API\\Services\\CategoriaService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAnwB0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T20:09:24.065Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T19:09:10.363Z"
             }
           ]
         }
