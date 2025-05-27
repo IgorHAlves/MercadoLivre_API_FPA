@@ -200,3 +200,4 @@ C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API_Test\obj\Debug\net8.0\refint\Mercad
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API_Test\obj\Debug\net8.0\MercadoLivre_API_Test.pdb
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API_Test\obj\Debug\net8.0\MercadoLivre_API_Test.genruntimeconfig.cache
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API_Test\obj\Debug\net8.0\ref\MercadoLivre_API_Test.dll
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API_Test\bin\Debug\net8.0\MercadoLivre_API.staticwebassets.endpoints.json

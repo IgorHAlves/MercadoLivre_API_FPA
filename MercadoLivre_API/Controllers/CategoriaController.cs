@@ -100,7 +100,7 @@ namespace MercadoLivre_API.Controllers
         }
 
         [HttpDelete("{idCategoria:int}")]
-        public async Task<IActionResult> DeleteCategoriaAsync([FromRoute] int idCategoria)
+        public ActionResult DeleteCategoriaAsync([FromRoute] int idCategoria)
         {
             try
             {

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "cNyzUngH3b49YIncsHkrksLnqf7dFba7yxH8L2eY8FQ=",
+  "Hash": "vamNVh8TlZdVHQHGXdhwbCzw9a+eM25BtbU07zWYYpI=",
   "Source": "MercadoLivre_API",
   "BasePath": "_content/MercadoLivre_API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

@@ -994,7 +994,10 @@
           "Swashbuckle.AspNetCore": "8.1.1"
         },
         "runtime": {
-          "MercadoLivre_API.dll": {}
+          "MercadoLivre_API.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

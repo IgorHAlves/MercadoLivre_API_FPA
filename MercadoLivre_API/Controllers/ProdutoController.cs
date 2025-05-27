@@ -59,7 +59,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostProdutoAsync([FromBody] PostPutProdutoViewModel vm)
+    public ActionResult PostProdutoAsync([FromBody] PostPutProdutoViewModel vm)
     {
         try
         {
@@ -78,7 +78,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpPut("{idProduto:int}")]
-    public async Task<IActionResult> PutProdutoAsync([FromRoute] int idProduto, [FromBody] PostPutProdutoViewModel vm)
+    public ActionResult PutProdutoAsync([FromRoute] int idProduto, [FromBody] PostPutProdutoViewModel vm)
     {
         try
         {
@@ -101,7 +101,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpDelete("{idProduto:int}")]
-    public async Task<IActionResult> DeleteProdutoAsync([FromRoute] int idProduto)
+    public ActionResult DeleteProdutoAsync([FromRoute] int idProduto)
     {
         try
         {
@@ -120,7 +120,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpGet("maisvendidos")]
-    public async Task<IActionResult> GetMaisVendidos()
+    public ActionResult GetMaisVendidos()
     {
         try
         {
@@ -135,7 +135,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpGet("quantidadetotalvendida")]
-    public async Task<IActionResult> GetTotalVendido()
+    public ActionResult GetTotalVendido()
     {
         try
         {
