@@ -131,5 +131,33 @@ namespace MercadoLivre_API.Services
             _dbContext.SaveChanges();
         }
 
+        public List<VisualizarProdutoViewModel> ProdutosMaisVendidos()
+        {
+            List<VisualizarProdutoViewModel>? vms = _dbContext.Produtos.Include(x => x.Categoria).ToList().Select(produto => new VisualizarProdutoViewModel()
+            {
+                Id = produto.Id,
+                Nome= produto.Nome,
+                Preco = produto.Preco,
+                QuantidadeVenda= produto.QuantidadeVenda,
+                Categoria = new VisualizarCategoriaProdutoViewModel()
+                {
+                    Id = produto.Id,
+                    Nome = produto.Nome
+                }
+            }).OrderByDescending(produto=> produto.QuantidadeVenda).Take(5).ToList();
+
+            return vms;
+        }
+
+        public TotalVendidoProdutoViewModel totalVendas()
+        {
+            TotalVendidoProdutoViewModel totalVendas = new TotalVendidoProdutoViewModel()
+            {
+                TotalVendido = _dbContext.Produtos.Sum(produto => produto.QuantidadeVenda)
+            };
+            
+            return totalVendas;
+        }
+
     }
 }

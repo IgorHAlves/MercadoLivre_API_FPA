@@ -118,4 +118,35 @@ public class ProdutoController : ControllerBase
             return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
         }
     }
+
+    [HttpGet("maisvendidos")]
+    public async Task<IActionResult> GetMaisVendidos()
+    {
+        try
+        {
+            List<VisualizarProdutoViewModel>? vms = _produtoService.ProdutosMaisVendidos();
+
+            return Ok(new ResultViewModel<List<VisualizarProdutoViewModel>>(vms));
+        }
+        catch (Exception ex )
+        {
+            return StatusCode(500, new ResultViewModel<VisualizarProdutoViewModel>(ex.Message));
+        }
+    }
+
+    [HttpGet("quantidadetotalvendida")]
+    public async Task<IActionResult> GetTotalVendido()
+    {
+        try
+        {
+            TotalVendidoProdutoViewModel totalVenda = _produtoService.totalVendas();
+
+            return Ok(new ResultViewModel<TotalVendidoProdutoViewModel>(totalVenda));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ResultViewModel<TotalVendidoProdutoViewModel>(ex.Message));
+        }
+    }
+
 };

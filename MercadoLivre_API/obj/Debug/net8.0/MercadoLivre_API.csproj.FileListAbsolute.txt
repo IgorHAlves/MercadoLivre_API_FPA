@@ -126,11 +126,6 @@ C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoLivre_API.M
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoLivre_API.sourcelink.json
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets.development.json
-C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.MercadoLivre_API.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.build.MercadoLivre_API.props
-C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MercadoLivre_API.props
-C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MercadoLivre_API.props
-C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\scopedcss\bundle\MercadoLivre_API.styles.css
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoL.9F57B545.Up2Date
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoLivre_API.dll
@@ -138,3 +133,8 @@ C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\refint\MercadoLivr
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoLivre_API.pdb
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\MercadoLivre_API.genruntimeconfig.cache
 C:\Dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\ref\MercadoLivre_API.dll
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.MercadoLivre_API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.build.MercadoLivre_API.props
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MercadoLivre_API.props
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MercadoLivre_API.props
+C:\dev\MercadoLivre_API_FPA\MercadoLivre_API\obj\Debug\net8.0\staticwebassets.pack.json

@@ -4527,11 +4527,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+      "projectUniqueName": "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
       "projectName": "MercadoLivre_API_Test",
-      "projectPath": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+      "projectPath": "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
       "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\obj\\",
+      "outputPath": "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Aluno\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4549,8 +4549,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj": {
-              "projectPath": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj"
+            "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj": {
+              "projectPath": "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API\\MercadoLivre_API.csproj"
             }
           }
         }

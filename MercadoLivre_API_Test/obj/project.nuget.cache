@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aQPF48ZNtMg=",
+  "dgSpecHash": "icphiWHYCho=",
   "success": true,
-  "projectFilePath": "C:\\Dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
+  "projectFilePath": "C:\\dev\\MercadoLivre_API_FPA\\MercadoLivre_API_Test\\MercadoLivre_API_Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aluno\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Aluno\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
