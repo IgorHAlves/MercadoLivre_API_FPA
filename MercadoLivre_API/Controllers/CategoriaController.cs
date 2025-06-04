@@ -95,7 +95,7 @@ namespace MercadoLivre_API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
+                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x04 - Falha interna no servidor: "+ex.Message));
             }
         }
 
@@ -114,8 +114,23 @@ namespace MercadoLivre_API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>(ex.Message));
+                return StatusCode(500, new ResultViewModel<VisualizarCategoriaViewModel>("01x05 - Falha interna no servidor: " + ex.Message));
             }
         }
+        [HttpGet("visualizarfaturamentoporcategoria")]
+        public ActionResult GetFaturamentoCategoria()
+        {
+            try
+            {
+                List<VisualizarFaturamentoPorCategoriaViewModel> vms = _categoriaService.VisualizarFaturamentoPorCategoria();
+
+                return Ok(new ResultViewModel<List<VisualizarFaturamentoPorCategoriaViewModel>>(vms));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<VisualizarFaturamentoPorCategoriaViewModel>("01x06 - Falha interna no servidor: " + ex.Message));
+            }
+        }
+        
     }
 }

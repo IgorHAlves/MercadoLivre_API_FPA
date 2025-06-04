@@ -16,7 +16,7 @@ namespace MercadoLivre_API.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Server=localhost,5432;Database=MercadoLivre;User ID=postgres;Password=unimar;TrustServerCertificate=True");
+                optionsBuilder.UseNpgsql("Server=localhost,5432;Database=MercadoLivre;User ID=postgres;Password=1234;TrustServerCertificate=True");
             }
         }
     }

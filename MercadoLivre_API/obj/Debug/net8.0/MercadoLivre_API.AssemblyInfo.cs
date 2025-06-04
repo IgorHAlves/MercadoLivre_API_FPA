@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MercadoLivre_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b74f25388950db33a12d4d424696afb5c5d107a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc4623c9a7064be729a3a068afcd0bf0b0c564a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("MercadoLivre_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MercadoLivre_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,7 +4,6 @@ using MercadoLivre_API.Models;
 using MercadoLivre_API.ViewModels.CategoriaViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace MercadoLivre_API.Services
 {
@@ -130,6 +129,19 @@ namespace MercadoLivre_API.Services
             }
             _dbContext.Categorias.Remove(categoria);
             _dbContext.SaveChanges();
+        }
+
+        public List<VisualizarFaturamentoPorCategoriaViewModel> VisualizarFaturamentoPorCategoria()
+        {
+            List<VisualizarFaturamentoPorCategoriaViewModel> vms = _dbContext.Produtos.Include(x => x.Categoria).GroupBy(produto => produto.Categoria.Nome)
+                        .Select(categoria => new VisualizarFaturamentoPorCategoriaViewModel
+                        {
+                            NomeCategoria = categoria.Key,
+                            Faturamento = categoria.Sum(p => p.Preco * p.QuantidadeVenda)
+                        })
+                        .ToList();
+
+            return vms;
         }
 
     }
